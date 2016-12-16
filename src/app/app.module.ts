@@ -3,7 +3,24 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+
+import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+
+
 import { AppComponent } from './app.component';
+
+
+
+
+// Must export the config
+export const firebaseConfig: FirebaseAppConfig = {
+  apiKey: 'AIzaSyBXt3H_l6n1PdUhwwQ9EUgyaLVylYLm2IQ',
+  authDomain: 'localhost',
+  databaseURL: 'https://ukeleoke.firebaseio.com',
+  storageBucket: ''
+};
+
+
 
 @NgModule({
   declarations: [
@@ -12,7 +29,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
