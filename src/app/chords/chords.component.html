@@ -1,0 +1,5 @@
+<kw-chord
+ *ngFor="let chord of chords | async"
+  [chord] = chord
+  [name] = chord.$key>
+</kw-chord>

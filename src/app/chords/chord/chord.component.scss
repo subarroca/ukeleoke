@@ -1,0 +1,52 @@
+svg {
+  width: 100px;
+}
+
+.strings,
+.frets,
+.nut{
+  stroke: #667;
+}
+
+.nut{
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.first-fret{
+  font-size: .75em;
+}
+
+
+.finger{
+  circle{
+    fill: var(--finger-color);
+  }
+
+  text{
+    fill: #fff;
+    font-size: .75em;
+  }
+}
+
+.finger--1{
+  --finger-color: #226;
+}
+.finger--2{
+  --finger-color: #f04;
+}
+.finger--3{
+  --finger-color: #0c4;
+}
+.finger--4{
+  --finger-color: #fa5;
+}
+
+.name{
+  font-weight: bold;
+}
+
+.transversal{
+  fill: white;
+  stroke: black;
+}

@@ -1,0 +1,70 @@
+<svg viewBox="0 0 120 135">
+  <g class = neck>
+    <path
+      class = nut
+      d = "M24,2 L96,2"
+      *ngIf = "chord.firstFret == 1"/>
+
+   <text
+     x = 0
+     y = 21
+     class = first-fret
+     *ngIf = "chord.firstFret !== 1">
+     {{chord.firstFret}}
+   </text>
+
+    <path
+      class = frets
+      d = "M23,4 L97,4
+          M23,28 L97,28
+          M23,52 L97,52
+          M23,76 L97,76
+          M23,100 L97,100"/>
+    
+    <path
+      class = strings
+      d = "M24,2 L24,105
+          M48,2 L48,105
+          M72,2 L72,105
+          M96,2 L96,105"/>
+  </g>
+  
+  <g class = chord>
+    <!-- <g class = transversal>
+      <rect
+        [attr.x] = getFingerX(1)
+        y = 40
+        width = 50
+        height = 20
+        rx = 10
+        ry = 10/>
+    </g> -->
+
+    <g class = fingers
+      *ngFor = "let finger of fingers | keys">
+      <g class = finger
+        *ngIf = finger>
+        <circle
+         attr.class = "finger--{{finger.value.finger}}"
+         [attr.cx] = getFingerX(finger.key)
+         [attr.cy] = getFingerY(finger.value)
+         r = 9>
+       </circle>
+       <text
+         [attr.x] = getFingerX(finger.key)
+         [attr.y] = "getFingerY(finger.value) + 4"
+         text-anchor="middle">
+         {{finger.value.finger}}
+       </text>
+      </g>
+    </g>
+  </g>
+
+  <text
+    x = 60
+    y = 125
+    text-anchor = middle
+    class = name>
+    {{name}}
+  </text>
+</svg>
