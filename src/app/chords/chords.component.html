@@ -1,5 +1,21 @@
+<ul>
+  <li
+    *ngFor="let chordGroup of chords | async"
+    (click) = selectGroup(chordGroup)>
+    {{chordGroup[0].$key[0]}}
+  </li>
+</ul>
+
+<ul>
+  <li
+    *ngFor="let chord of currentChordGroup"
+    (click) = selectChord(chord)>
+    {{chord.$key}}
+  </li>
+</ul>
+
 <kw-chord
- *ngFor="let chord of chords | async"
-  [chord] = chord
-  [name] = chord.$key>
+  *ngIf = currentChord
+  [chord] = currentChord
+  [name] = currentChord?.$key>
 </kw-chord>
