@@ -1,21 +1,38 @@
-<ul>
-  <li
+<div
+  class = chords-selected>
+  <kw-chord
+    *ngFor="let chord of selectedChords"
+    [chord] = chord
+    [name] = chord?.$key
+    (dblclick) = removeChord(chord)>
+  </kw-chord>
+</div>
+
+<div
+  class = chords-group>
+  <button
+    class = "chord-{{chordGroup[0].$key[0]}}"
     *ngFor="let chordGroup of chords | async"
     (click) = selectGroup(chordGroup)>
     {{chordGroup[0].$key[0]}}
-  </li>
-</ul>
+  </button>
+</div>
 
-<ul>
-  <li
+<div
+  class = chords>
+  <button
     *ngFor="let chord of currentChordGroup"
-    (click) = selectChord(chord)>
-    {{chord.$key}}
-  </li>
-</ul>
+    (click) = selectChord(chord)
+    (dblclick) = addChord(chord)>
+    <kw-chord
+      *ngIf = chord
+      [chord] = chord
+      [name] = chord?.$key>
+    </kw-chord>
+  </button>
+</div>
 
-<kw-chord
-  *ngIf = currentChord
-  [chord] = currentChord
-  [name] = currentChord?.$key>
-</kw-chord>
+<button
+  (click) = clearSelection()>
+  Clear selection
+</button>

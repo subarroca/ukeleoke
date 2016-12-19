@@ -1,0 +1,41 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chords-group{
+  display: flex;
+  justify-content: center;
+
+  button{
+    background: var(--chord-color);
+    border-radius: 50%;
+  }
+}
+
+.chord-A{
+  --chord-color: red;
+}
+.chord-B{
+  --chord-color: orange;
+}
+.chord-C{
+  --chord-color: yellow;
+}
+.chord-D{
+  --chord-color: green;
+}
+.chord-E{
+  --chord-color: cyan;
+}
+.chord-F{
+  --chord-color: blue;
+}
+.chord-G{
+  --chord-color: purple;
+}
+
+.chords-selected{
+  flex: 1;
+}

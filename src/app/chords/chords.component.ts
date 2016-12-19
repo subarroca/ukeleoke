@@ -17,8 +17,9 @@ import { Chord } from './shared/chord';
 export class ChordsComponent implements OnInit {
 
   chords: Observable<{}[]>;
-  currentChordGroup;
-  currentChord;
+  currentChordGroup: Chord[];
+  currentChord: Chord;
+  selectedChords: Chord[] = [];
 
   constructor(private af: AngularFire) {
   }
@@ -39,6 +40,19 @@ export class ChordsComponent implements OnInit {
 
   selectChord(chord) {
     this.currentChord = chord;
+  }
+
+  addChord(chord) {
+    if (!this.selectedChords.find(_chord => _chord.$key == chord.$key))
+      this.selectedChords.push(chord);
+  }
+
+  removeChord(chord) {
+    this.selectedChords = _.without(this.selectedChords, chord);
+  }
+
+  clearSelection() {
+    this.selectedChords = [];
   }
 
 }

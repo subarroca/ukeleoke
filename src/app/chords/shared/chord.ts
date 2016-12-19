@@ -11,6 +11,7 @@ export class Chord {
     4?: ChordFinger
   };
   firstFret: number;
+  $key: string;
 
   constructor(options: {
     fingers?: {
