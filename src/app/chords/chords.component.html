@@ -1,5 +1,5 @@
 <div
-  class = chords-selected>
+  class = chords--selected>
   <kw-chord
     *ngFor="let chord of selectedChords"
     [chord] = chord
@@ -8,31 +8,60 @@
   </kw-chord>
 </div>
 
-<div
-  class = chords-group>
-  <button
-    class = "chord-{{chordGroup[0].$key[0]}}"
-    *ngFor="let chordGroup of chords | async"
-    (click) = selectGroup(chordGroup)>
-    {{chordGroup[0].$key[0]}}
-  </button>
-</div>
+<form
+  [formGroup] = libraryForm
+  class = panel--collapsible>
+  <div
+    (click) = "isLibraryCollapsed = !isLibraryCollapsed">
+    ▶
+  </div>
 
-<div
-  class = chords>
-  <button
-    *ngFor="let chord of currentChordGroup"
-    (click) = selectChord(chord)
-    (dblclick) = addChord(chord)>
-    <kw-chord
-      *ngIf = chord
-      [chord] = chord
-      [name] = chord?.$key>
-    </kw-chord>
-  </button>
-</div>
+  <label>
+    <input
+      type = checkbox
+      formControlName = canRepeatChords>
+      Repeated chords {{canRepeatChords}}
+  </label>
 
-<button
-  (click) = clearSelection()>
-  Clear selection
-</button>
+  <div>
+    <span
+      class = button
+      (click) = clearSelection()>
+      Clear selection
+    </span>
+  </div>
+  
+  <div
+    class = chord--library
+    *ngIf = !isLibraryCollapsed>
+    <div
+      class = chords--group>
+      <span
+        class = "button chord--{{chordGroup[0].$key[0]}}"
+        *ngFor="let chordGroup of chords | async"
+        (click) = selectGroup(chordGroup)>
+        {{chordGroup[0].$key[0]}}
+      </span>
+
+      <span
+        class = "button chord--none"
+        (click) = clearSelectedGroup()>
+      </span>
+    </div>
+    
+    <div
+      class = chords>
+      <span
+        *ngFor="let chord of currentChordGroup"
+        class = button
+        (click) = selectChord(chord)
+        (dblclick) = addChord(chord)>
+        <kw-chord
+          *ngIf = chord
+          [chord] = chord
+          [name] = chord?.$key>
+        </kw-chord>
+      </span>
+    </div>
+  </div>
+</form>

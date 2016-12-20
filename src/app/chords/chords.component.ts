@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 import { AngularFire } from 'angularfire2';
@@ -20,6 +21,13 @@ export class ChordsComponent implements OnInit {
   currentChordGroup: Chord[];
   currentChord: Chord;
   selectedChords: Chord[] = [];
+  canRepeatChords: boolean = false;
+
+  // form
+  canRepeatChordsControl:FormControl = new FormControl();
+  libraryForm: FormGroup = new FormGroup({
+    canRepeatChords: this.canRepeatChordsControl
+  });
 
   constructor(private af: AngularFire) {
   }
@@ -32,10 +40,17 @@ export class ChordsComponent implements OnInit {
           .values()
           .value()
       );
+
+    this.canRepeatChordsControl.valueChanges
+    .subscribe(value => this.canRepeatChords = value);
   }
 
   selectGroup(group) {
     this.currentChordGroup = group;
+  }
+
+  clearSelectedGroup() {
+    this.currentChordGroup = undefined;
   }
 
   selectChord(chord) {
@@ -43,7 +58,8 @@ export class ChordsComponent implements OnInit {
   }
 
   addChord(chord) {
-    if (!this.selectedChords.find(_chord => _chord.$key == chord.$key))
+    console.log(this.canRepeatChords);
+    if (this.canRepeatChords || !this.selectedChords.find(_chord => _chord.$key == chord.$key))
       this.selectedChords.push(chord);
   }
 
