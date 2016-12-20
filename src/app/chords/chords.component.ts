@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AngularFire } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash';
 
-import { Chord } from './shared/chord';
+import { Chord } from '../chords/shared/chord';
 
 
 @Component({
@@ -16,21 +14,16 @@ import { Chord } from './shared/chord';
   styleUrls: ['./chords.component.scss']
 })
 export class ChordsComponent implements OnInit {
+  @Output() chordSelect:EventEmitter<Chord>=new EventEmitter<Chord>();
 
   chords: Observable<{}>;
   currentChordGroup: Chord[];
   currentChord: Chord;
-  selectedChords: Chord[] = [];
-  canRepeatChords: boolean = false;
 
-  // form
-  canRepeatChordsControl: FormControl = new FormControl();
-  libraryForm: FormGroup = new FormGroup({
-    canRepeatChords: this.canRepeatChordsControl
-  });
 
-  constructor(private af: AngularFire) {
-  }
+  constructor(
+    private af: AngularFire
+  ) { }
 
   ngOnInit() {
     this.chords = this.af.database.list('chords')
@@ -45,12 +38,9 @@ export class ChordsComponent implements OnInit {
           })
           .value()
       );
-
-    this.canRepeatChordsControl.valueChanges
-      .subscribe(value => this.canRepeatChords = value);
   }
 
-  selectGroup(group) {
+  selectGroup(group:Chord[]) {
     this.currentChordGroup = group;
   }
 
@@ -58,22 +48,8 @@ export class ChordsComponent implements OnInit {
     this.currentChordGroup = undefined;
   }
 
-  selectChord(chord) {
-    this.currentChord = chord;
-  }
-
-  addChord(chord) {
-    console.log(this.canRepeatChords);
-    if (this.canRepeatChords || !this.selectedChords.find(_chord => _chord.$key == chord.$key))
-      this.selectedChords.push(chord);
-  }
-
-  removeChord(chord) {
-    this.selectedChords = _.without(this.selectedChords, chord);
-  }
-
-  clearSelection() {
-    this.selectedChords = [];
+  selectChord(chord:Chord) {
+    this.chordSelect.emit(chord);
   }
 
 }

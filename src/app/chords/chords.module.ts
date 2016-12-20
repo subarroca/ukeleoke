@@ -15,7 +15,8 @@ import { SharedModule } from '../shared';
     ChordComponent
   ],
   exports: [
-    ChordsComponent
+    ChordsComponent,
+    ChordComponent
   ]
 })
 export class ChordsModule { }

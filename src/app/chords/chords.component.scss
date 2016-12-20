@@ -1,16 +1,14 @@
-:host{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+@import 'src/assets/styles/vars';
 
 .chords--group{
   display: flex;
   justify-content: center;
 
   .button{
-    background: var(--chord-color, #bbb);
+    color: var(--chord-color, #bbb);
+    border: 2px solid var(--chord-color, #bbb);
     border-radius: 50%;
+    font-weight: bold;
   }
 }
 
@@ -22,42 +20,38 @@
 }
 
 .chord--A{
-  --chord-color: red;
+  --chord-color: $chord--color--A;
 }
 .chord--A♭{
-  --chord-color: rgba(red,.5);
+  --chord-color: $chord--color--A♭;
 }
 .chord--B{
-  --chord-color: orange;
+  --chord-color: $chord--color--B;
 }
 .chord--B♭{
-  --chord-color: rgba(orange,.5);
+  --chord-color: $chord--color--B♭;
 }
 .chord--C{
-  --chord-color: yellow;
+  --chord-color: $chord--color--C;
 }
 .chord--D{
-  --chord-color: green;
+  --chord-color: $chord--color--D;
 }
 .chord--D♭{
-  --chord-color: rgba(green,.5);
+  --chord-color: $chord--color--D♭;
 }
 .chord--E{
-  --chord-color: cyan;
+  --chord-color: $chord--color--E;
 }
 .chord--E♭{
-  --chord-color: rgba(cyan,.5);
+  --chord-color: $chord--color--E♭;
 }
 .chord--F{
-  --chord-color: blue;
+  --chord-color: $chord--color--F;
 }
 .chord--G{
-  --chord-color: purple;
+  --chord-color: $chord--color--G;
 }
 .chord--G♭{
-  --chord-color: rgba(purple,.5);
-}
-
-.chords--selected{
-  flex: 1;
+  --chord-color: $chord--color--G♭;
 }

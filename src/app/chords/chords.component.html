@@ -1,70 +1,29 @@
 <div
-  class = chords--selected>
-  <kw-chord
-    *ngFor="let chord of selectedChords"
-    [chord] = chord
-    [name] = chord?.$key
-    (dblclick) = removeChord(chord)>
-  </kw-chord>
+  class = chords--group>
+  <span
+    class = "button chord--{{chordGroup.key}}"
+    *ngFor="let chordGroup of chords | async |keys"
+    (click) = selectGroup(chordGroup.value)>
+    {{chordGroup.key}}
+  </span>
+
+  <span
+    class = "button chord--none"
+    (click) = clearSelectedGroup()>
+    ×
+  </span>
 </div>
 
-<form
-  [formGroup] = libraryForm
-  class = panel--collapsible>
-  <div>
-    <div
-      (click) = "isLibraryCollapsed = !isLibraryCollapsed">
-      ▶
-    </div>
-    
-    <label>
-      <input
-        type = checkbox
-        formControlName = canRepeatChords>
-        Repeated chords {{canRepeatChords}}
-    </label>
-    
-    <div>
-      <span
-        class = button
-        (click) = clearSelection()>
-        Clear selection
-      </span>
-    </div>
-  </div>
-  
-  <div
-    class = chord--library
-    *ngIf = !isLibraryCollapsed>
-    <div
-      class = chords--group>
-      <span
-        class = "button chord--{{chordGroup.key}}"
-        *ngFor="let chordGroup of chords | async |keys"
-        (click) = selectGroup(chordGroup.value)>
-        {{chordGroup.key}}
-      </span>
-
-      <span
-        class = "button chord--none"
-        (click) = clearSelectedGroup()>
-        ×
-      </span>
-    </div>
-    
-    <div
-      class = chords>
-      <span
-        *ngFor="let chord of currentChordGroup"
-        class = button
-        (click) = selectChord(chord)
-        (dblclick) = addChord(chord)>
-        <kw-chord
-          *ngIf = chord
-          [chord] = chord
-          [name] = chord?.$key>
-        </kw-chord>
-      </span>
-    </div>
-  </div>
-</form>
+<div
+  class = chords>
+  <span
+    *ngFor="let chord of currentChordGroup"
+    class = button
+    (dblclick) = selectChord(chord)>
+    <kw-chord
+      *ngIf = chord
+      [chord] = chord
+      [name] = chord?.$key>
+    </kw-chord>
+  </span>
+</div>

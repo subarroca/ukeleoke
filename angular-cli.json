@@ -15,7 +15,7 @@
       "prefix": "kw",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "assets/styles/style.scss"
       ],
       "scripts": [],
       "environments": {

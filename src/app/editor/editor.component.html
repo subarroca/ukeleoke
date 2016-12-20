@@ -1,0 +1,35 @@
+<kw-song
+  [(chords)] = selectedChords>
+</kw-song>
+
+<form
+  [formGroup] = libraryForm
+  class = panel--collapsible>
+  <div
+    class = toolbar>
+    <div
+      (click) = "isLibraryCollapsed = !isLibraryCollapsed">
+      ▶
+    </div>
+    
+    <label>
+      <input
+        type = checkbox
+        formControlName = canRepeatChords>
+        Repeated chords
+    </label>
+    
+    <div>
+      <span
+        class = button
+        (click) = clearSelection()>
+        Clear selection
+      </span>
+    </div>
+  </div>
+  
+  <kw-chords
+    *ngIf = !isLibraryCollapsed
+    (chordSelect) = addChord($event)>
+  </kw-chords>
+</form>

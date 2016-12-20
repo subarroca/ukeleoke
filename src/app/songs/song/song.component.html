@@ -1,0 +1,6 @@
+<kw-chord
+  *ngFor="let chord of chords"
+  [chord] = chord
+  [name] = chord?.$key
+  (dblclick) = removeChord(chord)>
+</kw-chord>

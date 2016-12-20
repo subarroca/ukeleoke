@@ -1,0 +1,14 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+kw-song{
+  flex: 1;
+}
+
+.toolbar{
+  display: flex;
+  align-items: center;
+}

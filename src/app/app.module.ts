@@ -9,6 +9,8 @@ import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { ChordsModule } from './chords/chords.module';
+import { SongsModule } from './songs/songs.module';
+import { EditorModule } from './editor/editor.module';
 
 
 
@@ -32,7 +34,9 @@ export const firebaseConfig: FirebaseAppConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    ChordsModule
+    ChordsModule,
+    SongsModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
