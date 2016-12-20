@@ -9,16 +9,29 @@
   justify-content: center;
 
   .button{
-    background: var(--chord-color);
+    background: var(--chord-color, #bbb);
     border-radius: 50%;
   }
+}
+
+.chords{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
 }
 
 .chord--A{
   --chord-color: red;
 }
+.chord--A♭{
+  --chord-color: rgba(red,.5);
+}
 .chord--B{
   --chord-color: orange;
+}
+.chord--B♭{
+  --chord-color: rgba(orange,.5);
 }
 .chord--C{
   --chord-color: yellow;
@@ -26,14 +39,23 @@
 .chord--D{
   --chord-color: green;
 }
+.chord--D♭{
+  --chord-color: rgba(green,.5);
+}
 .chord--E{
   --chord-color: cyan;
+}
+.chord--E♭{
+  --chord-color: rgba(cyan,.5);
 }
 .chord--F{
   --chord-color: blue;
 }
 .chord--G{
   --chord-color: purple;
+}
+.chord--G♭{
+  --chord-color: rgba(purple,.5);
 }
 
 .chords--selected{

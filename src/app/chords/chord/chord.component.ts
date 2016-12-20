@@ -20,7 +20,7 @@ export class ChordComponent implements OnInit, OnChanges {
   private fretDelta: number = 24;
 
 
-  private fingers;
+  private strings;
 
 
   constructor() { }
@@ -31,7 +31,7 @@ export class ChordComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['chord']) {
       this.chord = new Chord(this.chord);
-      this.fingers = this.chord.fingers;
+      this.strings = this.chord.strings;
     }
   }
 

@@ -3,7 +3,7 @@ import { ChordFinger } from './chord-finger';
 import * as _ from 'lodash';
 
 export class Chord {
-  fingers: {
+  strings: {
     0?: ChordFinger,
     1?: ChordFinger,
     2?: ChordFinger,
@@ -14,7 +14,7 @@ export class Chord {
   $key: string;
 
   constructor(options: {
-    fingers?: {
+    strings?: {
       0?: ChordFinger,
       1?: ChordFinger,
       2?: ChordFinger,
@@ -23,7 +23,7 @@ export class Chord {
     },
     firstFret?: number
   } = {}) {
-    this.fingers = _.forIn(options.fingers, (finger => new ChordFinger(finger)));
+    this.strings = _.forIn(options.strings, (finger => new ChordFinger(finger)));
     this.firstFret = options.firstFret || 1;
   }
 }

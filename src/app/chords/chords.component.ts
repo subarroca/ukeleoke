@@ -17,14 +17,14 @@ import { Chord } from './shared/chord';
 })
 export class ChordsComponent implements OnInit {
 
-  chords: Observable<{}[]>;
+  chords: Observable<{}>;
   currentChordGroup: Chord[];
   currentChord: Chord;
   selectedChords: Chord[] = [];
   canRepeatChords: boolean = false;
 
   // form
-  canRepeatChordsControl:FormControl = new FormControl();
+  canRepeatChordsControl: FormControl = new FormControl();
   libraryForm: FormGroup = new FormGroup({
     canRepeatChords: this.canRepeatChordsControl
   });
@@ -36,13 +36,18 @@ export class ChordsComponent implements OnInit {
     this.chords = this.af.database.list('chords')
       .map(chords =>
         _.chain(chords)
-          .groupBy(chord => chord.$key[0])
-          .values()
+          .groupBy(chord => {
+            if (chord.$key[1] === '♭') {
+              return chord.$key.slice(0,2);
+            } else {
+              return chord.$key[0];
+            }
+          })
           .value()
       );
 
     this.canRepeatChordsControl.valueChanges
-    .subscribe(value => this.canRepeatChords = value);
+      .subscribe(value => this.canRepeatChords = value);
   }
 
   selectGroup(group) {

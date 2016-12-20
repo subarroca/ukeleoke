@@ -41,20 +41,20 @@
     </g> -->
 
     <g class = fingers
-      *ngFor = "let finger of fingers | keys">
+      *ngFor = "let string of strings | keys">
       <g class = finger
-        *ngIf = finger>
+        *ngIf = string>
         <circle
-         attr.class = "finger--{{finger.value.finger}}"
-         [attr.cx] = getFingerX(finger.key)
-         [attr.cy] = getFingerY(finger.value)
+         attr.class = "finger--{{string.value.finger}}"
+         [attr.cx] = getFingerX(string.key)
+         [attr.cy] = getFingerY(string.value)
          r = 9>
        </circle>
        <text
-         [attr.x] = getFingerX(finger.key)
-         [attr.y] = "getFingerY(finger.value) + 4"
+         [attr.x] = getFingerX(string.key)
+         [attr.y] = "getFingerY(string.value) + 4"
          text-anchor="middle">
-         {{finger.value.finger}}
+         {{string.value.finger}}
        </text>
       </g>
     </g>

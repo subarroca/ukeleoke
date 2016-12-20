@@ -11,24 +11,26 @@
 <form
   [formGroup] = libraryForm
   class = panel--collapsible>
-  <div
-    (click) = "isLibraryCollapsed = !isLibraryCollapsed">
-    ▶
-  </div>
-
-  <label>
-    <input
-      type = checkbox
-      formControlName = canRepeatChords>
-      Repeated chords {{canRepeatChords}}
-  </label>
-
   <div>
-    <span
-      class = button
-      (click) = clearSelection()>
-      Clear selection
-    </span>
+    <div
+      (click) = "isLibraryCollapsed = !isLibraryCollapsed">
+      ▶
+    </div>
+    
+    <label>
+      <input
+        type = checkbox
+        formControlName = canRepeatChords>
+        Repeated chords {{canRepeatChords}}
+    </label>
+    
+    <div>
+      <span
+        class = button
+        (click) = clearSelection()>
+        Clear selection
+      </span>
+    </div>
   </div>
   
   <div
@@ -37,15 +39,16 @@
     <div
       class = chords--group>
       <span
-        class = "button chord--{{chordGroup[0].$key[0]}}"
-        *ngFor="let chordGroup of chords | async"
-        (click) = selectGroup(chordGroup)>
-        {{chordGroup[0].$key[0]}}
+        class = "button chord--{{chordGroup.key}}"
+        *ngFor="let chordGroup of chords | async |keys"
+        (click) = selectGroup(chordGroup.value)>
+        {{chordGroup.key}}
       </span>
 
       <span
         class = "button chord--none"
         (click) = clearSelectedGroup()>
+        ×
       </span>
     </div>
     
