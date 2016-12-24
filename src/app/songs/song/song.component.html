@@ -1,6 +1,19 @@
-<kw-chord
-  *ngFor="let chord of chords"
-  [chord] = chord
-  [name] = chord?.$key
-  (dblclick) = removeChord(chord)>
-</kw-chord>
+<div
+  fxLayout = row
+  fxLayoutWrap = wrap
+  class = chords>
+  <div
+    *ngFor="let chord of chords"
+    class = chord
+    fxLayout = column
+    fxLayoutAlign = "center center">
+    <kw-chord
+      [chord] = chord
+      [name] = chord?.$key>
+    </kw-chord>
+    <md-icon
+      (click) = removeChord(chord)>
+      delete
+    </md-icon>
+  </div>
+</div>

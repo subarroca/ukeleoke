@@ -6,26 +6,31 @@
   [formGroup] = libraryForm
   class = panel--collapsible>
   <div
+    fxLayout = row
+    fxLayoutAlign = "space-between center"
     class = toolbar>
     <div
       (click) = "isLibraryCollapsed = !isLibraryCollapsed">
-      ▶
+      <md-icon
+        *ngIf = isLibraryCollapsed>
+        expand_less
+      </md-icon>
+
+      <md-icon
+        *ngIf = !isLibraryCollapsed>
+        expand_more
+      </md-icon>
     </div>
     
-    <label>
-      <input
-        type = checkbox
-        formControlName = canRepeatChords>
-        Repeated chords
-    </label>
+    <md-slide-toggle
+      formControlName = canRepeatChords>
+      Allow repeated
+    </md-slide-toggle>
     
-    <div>
-      <span
-        class = button
-        (click) = clearSelection()>
-        Clear selection
-      </span>
-    </div>
+    <md-icon
+      (click) = clearSelection()>
+      delete
+    </md-icon>
   </div>
   
   <kw-chords

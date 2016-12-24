@@ -1,3 +1,5 @@
+@import 'src/assets/styles/vars';
+
 svg {
   width: 100px;
 }
@@ -5,7 +7,7 @@ svg {
 .strings,
 .frets,
 .nut{
-  stroke: #667;
+  stroke: $chord-structure;
 }
 
 .nut{
@@ -20,30 +22,32 @@ svg {
 
 .finger{
   circle{
-    fill: var(--finger-color);
+    fill: var(--finger-color, $finger--default);
   }
 
   text{
-    fill: #fff;
+    fill: $primary-color;
+    font-weight: bold;
     font-size: .75em;
   }
 }
 
 .finger--1{
-  --finger-color: #226;
+  --finger-color: $finger--1;
 }
 .finger--2{
-  --finger-color: #f04;
+  --finger-color: $finger--2;
 }
 .finger--3{
-  --finger-color: #0c4;
+  --finger-color: $finger--3;
 }
 .finger--4{
-  --finger-color: #fa5;
+  --finger-color: $finger--4;
 }
 
 .name{
   font-weight: bold;
+  fill: $contrast-color;
 }
 
 .transversal{

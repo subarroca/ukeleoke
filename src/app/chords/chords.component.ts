@@ -30,11 +30,12 @@ export class ChordsComponent implements OnInit {
       .map(chords =>
         _.chain(chords)
           .groupBy(chord => {
-            if (chord.$key[1] === '♭') {
-              return chord.$key.slice(0,2);
-            } else {
-              return chord.$key[0];
-            }
+            return chord.$key[0];
+            // if (chord.$key[1] === '♭') {
+            //   return chord.$key.slice(0,2);
+            // } else {
+            //   return chord.$key[0];
+            // }
           })
           .value()
       );

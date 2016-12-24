@@ -1,25 +1,30 @@
 <div
-  class = chords--group>
+  fxLayout = row
+  class = chord-groups>
   <span
-    class = "button chord--{{chordGroup.key}}"
+    fxFlex
+    class = "chord-group chord-group--{{chordGroup.key}}"
     *ngFor="let chordGroup of chords | async |keys"
     (click) = selectGroup(chordGroup.value)>
     {{chordGroup.key}}
   </span>
 
-  <span
-    class = "button chord--none"
+  <!-- <span
+    fxFlex
+    class = "chord-group chord-group--none"
     (click) = clearSelectedGroup()>
     ×
-  </span>
+  </span> -->
 </div>
 
 <div
+  fxLayout = row
   class = chords>
   <span
+    class = chord
     *ngFor="let chord of currentChordGroup"
-    class = button
-    (dblclick) = selectChord(chord)>
+    fxFlex
+    (click) = selectChord(chord)>
     <kw-chord
       *ngIf = chord
       [chord] = chord
