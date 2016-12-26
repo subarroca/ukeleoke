@@ -17,9 +17,10 @@ import { UserModule } from './user/user.module';
 
 const firebaseConfig: FirebaseAppConfig = {
   apiKey: 'AIzaSyBXt3H_l6n1PdUhwwQ9EUgyaLVylYLm2IQ',
-  authDomain: 'localhost',
+  authDomain: 'ukeleoke.firebaseio.com',
   databaseURL: 'https://ukeleoke.firebaseio.com',
-  storageBucket: ''
+  storageBucket: "ukeleoke.appspot.com",
+  // messagingSenderId: "208956292271"
 };
 
 const firebaseAuthConfig = {
