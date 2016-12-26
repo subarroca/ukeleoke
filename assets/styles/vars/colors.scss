@@ -1,4 +1,4 @@
-$primary-color: #223;
+$primary-color: #222;
 $contrast-color: white;
 $accent-color: #3ea;
 
@@ -7,7 +7,7 @@ $primary-color--2: lighten($primary-color, 15);
 
 $chord-structure: lighten($primary-color, 50);
 $finger--default: $accent-color;
-$finger--1: $contrast-color;
+$finger--1: $primary-color;
 $finger--2: #f37;
 $finger--3: $accent-color;
 $finger--4: #fd3;
