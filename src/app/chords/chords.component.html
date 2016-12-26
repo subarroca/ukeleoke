@@ -1,13 +1,16 @@
 <div
   fxLayout = row
+  fxLayoutAlign = "center center"
   class = chord-groups>
-  <span
-    fxFlex
+
+  <button
+    md-icon-button
     class = "chord-group chord-group--{{chordGroup.key}}"
     *ngFor="let chordGroup of chords | async |keys"
-    (click) = selectGroup(chordGroup.value)>
+    [color] = "(chordGroup.key === currentChordGroup.key) ? 'accent' : ''"
+    (click) = selectGroup(chordGroup)>
     {{chordGroup.key}}
-  </span>
+  </button>
 
   <!-- <span
     fxFlex
@@ -19,16 +22,12 @@
 
 <div
   fxLayout = row
+  fxLayoutWrap = wrap
   class = chords>
-  <span
-    class = chord
-    *ngFor="let chord of currentChordGroup"
-    fxFlex
+  <button
+    md-button
+    *ngFor="let chord of currentChordGroup.value"
     (click) = selectChord(chord)>
-    <kw-chord
-      *ngIf = chord
-      [chord] = chord
-      [name] = chord?.$key>
-    </kw-chord>
-  </span>
+    {{chord.$key}}
+  </button>
 </div>

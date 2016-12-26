@@ -13,8 +13,8 @@ body{
   font-family: 'Roboto', sans-serif;
   height: 100vh;
   display: flex;
-  background: $primary-color;
-  color: $contrast-color;
+  justify-content: center;
+  align-items: center;
 }
 
 

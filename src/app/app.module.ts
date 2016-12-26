@@ -4,24 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
-import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
 
 import { AppComponent } from './app.component';
-import { ChordsModule } from './chords/chords.module';
-import { SongsModule } from './songs/songs.module';
+import { SharedModule } from './shared/shared.module';
 import { EditorModule } from './editor/editor.module';
+import { UserModule } from './user/user.module';
 
 
 
 
-// Must export the config
-export const firebaseConfig: FirebaseAppConfig = {
+const firebaseConfig: FirebaseAppConfig = {
   apiKey: 'AIzaSyBXt3H_l6n1PdUhwwQ9EUgyaLVylYLm2IQ',
   authDomain: 'localhost',
   databaseURL: 'https://ukeleoke.firebaseio.com',
   storageBucket: ''
 };
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+}
 
 
 
@@ -33,10 +37,11 @@ export const firebaseConfig: FirebaseAppConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    ChordsModule,
-    SongsModule,
-    EditorModule
+    AngularFireModule
+      .initializeApp(firebaseConfig, firebaseAuthConfig),
+    SharedModule,
+    EditorModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,39 +2,48 @@
   [(chords)] = selectedChords>
 </kw-song>
 
-<form
-  [formGroup] = libraryForm
-  class = panel--collapsible>
+<md-toolbar>
   <div
     fxLayout = row
     fxLayoutAlign = "space-between center"
     class = toolbar>
-    <div
-      (click) = "isLibraryCollapsed = !isLibraryCollapsed">
+    <button
+      md-icon-button
+      (click) = toggleCanRepeatChords()
+      [color] = "canRepeatChords ? 'accent' : ''">
+      <md-icon>
+        repeat
+      </md-icon>
+    </button>
+    
+    <button
+      md-icon-button
+      (click) = clearSelection()>
+      <md-icon>
+        delete
+      </md-icon>
+    </button>
+
+    <button
+      md-icon-button
+      (click) = "isChordsCollapsed = !isChordsCollapsed">
       <md-icon
-        *ngIf = isLibraryCollapsed>
+        *ngIf = isChordsCollapsed>
         expand_less
       </md-icon>
 
       <md-icon
-        *ngIf = !isLibraryCollapsed>
+        *ngIf = !isChordsCollapsed>
         expand_more
       </md-icon>
-    </div>
-    
-    <md-slide-toggle
-      formControlName = canRepeatChords>
-      Allow repeated
-    </md-slide-toggle>
-    
-    <md-icon
-      (click) = clearSelection()>
-      delete
-    </md-icon>
+    </button>
   </div>
-  
-  <kw-chords
-    *ngIf = !isLibraryCollapsed
-    (chordSelect) = addChord($event)>
-  </kw-chords>
-</form>
+
+  <md-toolbar-row
+    class = chords-row
+    *ngIf = !isChordsCollapsed>
+    <kw-chords
+      (chordSelect) = addChord($event)>
+    </kw-chords>
+  </md-toolbar-row>
+</md-toolbar>

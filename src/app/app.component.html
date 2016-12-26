@@ -1,1 +1,23 @@
-<kw-editor></kw-editor>
+<md-sidenav-container>
+  <md-sidenav
+    #sidenav>
+    <kw-user></kw-user>
+  </md-sidenav>
+
+  <div
+    class = content
+    fxLayout = column>
+    <button
+      md-icon-button
+      (click) = "sidenav.open()">
+      <md-icon>
+        menu
+      </md-icon>
+    </button>
+
+    <kw-editor
+      fxFlex>
+    </kw-editor>
+  </div>
+
+</md-sidenav-container>

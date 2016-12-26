@@ -1,0 +1,20 @@
+<div
+  fxLayout = row>
+  <div>
+    {{ (af.auth | async)?.uid }}
+  </div>
+  
+  <button
+    md-button
+    *ngIf = "!(af.auth | async)?.uid"
+    (click) = "login()">
+    Login
+  </button>
+  
+  <button
+    md-button
+    *ngIf = "(af.auth | async)?.uid"
+    (click) = "logout()">
+    Logout
+  </button>
+</div>

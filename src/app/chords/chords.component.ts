@@ -14,10 +14,13 @@ import { Chord } from '../chords/shared/chord';
   styleUrls: ['./chords.component.scss']
 })
 export class ChordsComponent implements OnInit {
-  @Output() chordSelect:EventEmitter<Chord>=new EventEmitter<Chord>();
+  @Output() chordSelect: EventEmitter<Chord> = new EventEmitter<Chord>();
 
   chords: Observable<{}>;
-  currentChordGroup: Chord[];
+  currentChordGroup: {
+    key?: string,
+    value?: Chord[]
+  } = {};
   currentChord: Chord;
 
 
@@ -41,7 +44,7 @@ export class ChordsComponent implements OnInit {
       );
   }
 
-  selectGroup(group:Chord[]) {
+  selectGroup(group: Chord[]) {
     this.currentChordGroup = group;
   }
 
@@ -49,7 +52,7 @@ export class ChordsComponent implements OnInit {
     this.currentChordGroup = undefined;
   }
 
-  selectChord(chord:Chord) {
+  selectChord(chord: Chord) {
     this.chordSelect.emit(chord);
   }
 

@@ -11,9 +11,13 @@
       [chord] = chord
       [name] = chord?.$key>
     </kw-chord>
-    <md-icon
+
+    <button
+      md-icon-button
       (click) = removeChord(chord)>
-      delete
-    </md-icon>
+      <md-icon>
+        delete
+      </md-icon>
+    </button>
   </div>
 </div>

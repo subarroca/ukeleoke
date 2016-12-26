@@ -1,4 +1,12 @@
-:host{
-  display: flex;
+:host,
+md-sidenav-container,
+.content,
+kw-editor{
   width: 100%;
+}
+
+:host,
+md-sidenav-container,
+.content{
+  height: 100%;
 }
