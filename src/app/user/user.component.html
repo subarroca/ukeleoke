@@ -1,21 +1,32 @@
-<div
-  fxLayout = row>
-  <div>
-    {{ (af.auth | async)?.uid }}
-    {{ (af.auth | async) | json }}
+<md-toolbar>
+  <div
+    class = profile
+    fxLayout = row
+    fxLayoutAlign = "start center"
+    *ngIf = "(af.auth | async)?.uid">
+    <img
+      [src] = "(af.auth | async)?.auth.photoURL" />
+    <span>{{ (af.auth | async)?.auth.displayName }}</span>
+  </div>
+
+  <div
+    *ngIf = "!(af.auth | async)?.uid">
+    <button
+      md-button
+      *ngIf = "!(af.auth | async)?.uid"
+      (click) = "login()">
+      Login
+    </button>
   </div>
   
-  <button
-    md-button
-    *ngIf = "!(af.auth | async)?.uid"
-    (click) = "login()">
-    Login
-  </button>
-  
-  <button
-    md-button
+  <md-toolbar-row
     *ngIf = "(af.auth | async)?.uid"
-    (click) = "logout()">
-    Logout
-  </button>
-</div>
+    fxLayout = row
+    fxLayoutAlign = "end center">
+    <button
+      md-button
+      (click) = "logout()">
+      Logout
+    </button>
+  </md-toolbar-row>
+</md-toolbar>

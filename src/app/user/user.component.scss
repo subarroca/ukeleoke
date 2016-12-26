@@ -1,0 +1,11 @@
+@import 'src/assets/styles/vars';
+
+
+.profile{
+  img{
+    border-radius: 50%;
+    width: $tap-size;
+    height: $tap-size;
+    margin-right: $grid-gutter;
+  }
+}

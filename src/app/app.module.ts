@@ -17,7 +17,7 @@ import { UserModule } from './user/user.module';
 
 const firebaseConfig: FirebaseAppConfig = {
   apiKey: 'AIzaSyBXt3H_l6n1PdUhwwQ9EUgyaLVylYLm2IQ',
-  authDomain: 'ukeleoke.firebaseio.com',
+  authDomain: 'ukeleoke.firebaseapp.com',
   databaseURL: 'https://ukeleoke.firebaseio.com',
   storageBucket: "ukeleoke.appspot.com",
   // messagingSenderId: "208956292271"
@@ -25,7 +25,7 @@ const firebaseConfig: FirebaseAppConfig = {
 
 const firebaseAuthConfig = {
   provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
+  method: AuthMethods.Popup
 }
 
 
