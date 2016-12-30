@@ -1,23 +1,41 @@
-<div
-  fxLayout = row
-  fxLayoutWrap = wrap
-  class = chords>
-  <div
-    *ngFor="let chord of chords"
-    class = chord
-    fxLayout = column
-    fxLayoutAlign = "center center">
-    <kw-chord
-      [chord] = chord
-      [name] = chord?.$key>
-    </kw-chord>
+<md-card
+  fxLayout = column>
+  <md-input-container>
+    <input
+      md-input
+      placeholder = "Title"
+      [disabled] = isEditing>
+  </md-input-container>
 
-    <button
-      md-icon-button
-      (click) = removeChord(chord)>
-      <md-icon>
-        delete
-      </md-icon>
-    </button>
+  <md-input-container>
+    <input
+      md-input
+      placeholder = "Author"
+      [disabled] = isEditing>
+  </md-input-container>
+  
+  <div
+    fxLayout = row
+    fxLayoutWrap = wrap
+    fxLayoutAlign = "center center"
+    class = chords>
+    <div
+      *ngFor="let chord of chords"
+      class = chord
+      fxLayout = column
+      fxLayoutAlign = "center center">
+      <kw-chord
+        [chord] = chord
+        [name] = chord?.$key>
+      </kw-chord>
+  
+      <button
+        md-icon-button
+        (click) = removeChord(chord)>
+        <md-icon>
+          delete
+        </md-icon>
+      </button>
+    </div>
   </div>
-</div>
+</md-card>

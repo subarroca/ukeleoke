@@ -1,12 +1,13 @@
 @import 'src/assets/styles/vars';
 
 :host{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  padding: $grid-gutter;
 }
 
-md-icon{
-  opacity: .5;
-  margin: $grid-gutter 0 2*$grid-gutter;
+.chord{
+  md-icon{
+    opacity: .5;
+    margin: $grid-gutter 0 2*$grid-gutter;
+  }
 }

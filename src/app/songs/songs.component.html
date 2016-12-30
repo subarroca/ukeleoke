@@ -1,3 +1,14 @@
-<p>
-  songs works!
-</p>
+<md-list>
+  <md-list-item
+    *ngFor = "let song of songs$ | async">
+    {{song.title}}
+  </md-list-item>
+</md-list>
+
+<a
+  md-fab
+  [routerLink] = "['../song/new']">
+  <md-icon>
+    add
+  </md-icon>
+</a>

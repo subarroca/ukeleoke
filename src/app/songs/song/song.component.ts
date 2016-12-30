@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 import { Chord } from '../../chords/shared/chord';
+import { AngularFire } from 'angularfire2';
 
 
 @Component({
@@ -9,12 +10,16 @@ import { Chord } from '../../chords/shared/chord';
   styleUrls: ['./song.component.scss']
 })
 export class SongComponent implements OnInit {
-  @Input() chords:Chord[];
-  @Output() chordsChange:EventEmitter<Chord[]> = new EventEmitter<Chord[]>();
+  @Input() chords: Chord[];
+  @Output() chordsChange: EventEmitter<Chord[]> = new EventEmitter<Chord[]>();
+  @Input() isEditing: boolean;
 
-  constructor() { }
+  constructor(
+    private af: AngularFire
+  ) { }
 
   ngOnInit() {
+    // this.af.database.object.ge
   }
 
   removeChord(chord) {

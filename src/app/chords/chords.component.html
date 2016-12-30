@@ -6,7 +6,7 @@
   <button
     md-icon-button
     class = "chord-group chord-group--{{chordGroup.key}}"
-    *ngFor="let chordGroup of chords | async |keys"
+    *ngFor="let chordGroup of chords$ | async |keys"
     [color] = "(chordGroup.key === currentChordGroup.key) ? 'accent' : ''"
     (click) = selectGroup(chordGroup)>
     {{chordGroup.key}}

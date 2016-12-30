@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 
 import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
@@ -9,8 +10,9 @@ import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { EditorModule } from './editor/editor.module';
+import { SongsModule } from './songs/songs.module';
 import { UserModule } from './user/user.module';
+import { appRoutes } from './app.routes';
 
 
 
@@ -38,10 +40,11 @@ const firebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes),
     AngularFireModule
       .initializeApp(firebaseConfig, firebaseAuthConfig),
     SharedModule,
-    EditorModule,
+    SongsModule,
     UserModule
   ],
   providers: [],

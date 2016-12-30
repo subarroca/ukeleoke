@@ -16,7 +16,7 @@ import { Chord } from '../chords/shared/chord';
 export class ChordsComponent implements OnInit {
   @Output() chordSelect: EventEmitter<Chord> = new EventEmitter<Chord>();
 
-  chords: Observable<{}>;
+  chords$: Observable<{}>;
   currentChordGroup: {
     key?: string,
     value?: Chord[]
@@ -29,7 +29,7 @@ export class ChordsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.chords = this.af.database.list('chords')
+    this.chords$ = this.af.database.list('chords')
       .map(chords =>
         _.chain(chords)
           .groupBy(chord => {

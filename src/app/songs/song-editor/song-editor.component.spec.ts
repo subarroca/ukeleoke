@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { EditorComponent } from './editor.component';
+import { SongEditorComponent } from './song-editor.component';
 
-describe('Component: Editor', () => {
+describe('Component: SongEditor', () => {
   it('should create an instance', () => {
-    let component = new EditorComponent();
+    let component = new SongEditorComponent();
     expect(component).toBeTruthy();
   });
 });
