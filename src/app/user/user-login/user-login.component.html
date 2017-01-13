@@ -1,13 +1,8 @@
 <md-toolbar>
-  <div
-    class = profile
-    fxLayout = row
-    fxLayoutAlign = "start center"
-    *ngIf = "(af.auth | async)?.uid">
-    <img
-      [src] = "(af.auth | async)?.auth.photoURL" />
-    <span>{{ (af.auth | async)?.auth.displayName }}</span>
-  </div>
+  <kw-user-tag
+    *ngIf = "(af.auth | async)?.uid"
+    [user] = "(af.auth | async).auth">
+  </kw-user-tag>
 
   <div
     *ngIf = "!(af.auth | async)?.uid">

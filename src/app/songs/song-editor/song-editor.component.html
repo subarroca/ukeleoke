@@ -1,6 +1,6 @@
 <kw-song
-  [(chords)] = selectedChords
-  [isEditing] = "isEditing || (isNew$ | async)">
+  [(song)] = song
+  [isEditing] = "isEditing || isNew">
 </kw-song>
 
 <div
@@ -9,21 +9,38 @@
   fxLayoutAlign = "end center">
   <button
     md-fab
-    *ngIf = isEditing
+    color = warn
+    *ngIf = "!isLogged"
+    (click) = showNotLogged()>
+    <md-icon>warning</md-icon>
+  </button>
+
+  <button
+    md-fab
+    color = warn
+    *ngIf = "!isOwner"
+    (click) = showNotLogged()>
+    <md-icon>warning</md-icon>
+  </button>
+
+  <button
+    md-fab
+    *ngIf = "canSave"
     (click) = save()>
     <md-icon>save</md-icon>
   </button>
   
   <button
     md-fab
-    *ngIf = "!isEditing && (auth$ |async)"
+    *ngIf = "canEdit"
     (click) = edit()>
     <md-icon>mode_edit</md-icon>
   </button>
 </div>
 
+
 <md-toolbar
-  *ngIf = "isEditing || (isNew$ | async)">
+  *ngIf = "isEditing || isNew">
   <div
     fxLayout = row
     fxLayoutAlign = "space-between center"

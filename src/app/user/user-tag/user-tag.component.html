@@ -1,0 +1,9 @@
+<div
+  class = profile
+  fxLayout = row
+  fxLayoutAlign = "start center"
+  *ngIf = user>
+  <img
+    [src] = "user?.photoURL" />
+  <span>{{ user?.displayName }}</span>
+</div>

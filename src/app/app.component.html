@@ -1,7 +1,21 @@
 <md-sidenav-container>
   <md-sidenav
     #sidenav>
-    <kw-user></kw-user>
+    <kw-user-login></kw-user-login>
+    
+    <md-nav-list>
+      <a
+        md-list-item
+        [routerLink] = "['/songs']"
+        (click) = "sidenav.close()">
+        <md-icon
+          md-list-avatar>
+          music_note
+        </md-icon>
+
+        <span>Songs</span>  
+      </a>
+    </md-nav-list>
   </md-sidenav>
 
   <div
@@ -9,6 +23,7 @@
     fxLayout = column>
     <button
       md-icon-button
+      disableRipple = true
       (click) = "sidenav.open()">
       <md-icon>
         menu

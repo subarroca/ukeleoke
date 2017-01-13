@@ -4,15 +4,22 @@
     <input
       md-input
       placeholder = "Title"
-      [disabled] = isEditing>
+      [(ngModel)] = song.title
+      [disabled] = !isEditing>
   </md-input-container>
 
   <md-input-container>
     <input
       md-input
       placeholder = "Author"
-      [disabled] = isEditing>
+      [(ngModel)] = song.author
+      [disabled] = !isEditing>
   </md-input-container>
+
+  <kw-user-tag
+    [user] = "creator$ | async">
+  </kw-user-tag>
+
   
   <div
     fxLayout = row
@@ -20,7 +27,7 @@
     fxLayoutAlign = "center center"
     class = chords>
     <div
-      *ngFor="let chord of chords"
+      *ngFor="let chord of song.chords"
       class = chord
       fxLayout = column
       fxLayoutAlign = "center center">

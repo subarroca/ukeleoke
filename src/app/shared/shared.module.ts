@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
@@ -11,6 +11,7 @@ import { CanActivateIsAuthenticated } from './can-activate-is-authenticated';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot()
@@ -18,6 +19,7 @@ import { CanActivateIsAuthenticated } from './can-activate-is-authenticated';
   declarations: [KeysPipe],
   exports: [
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     MaterialModule,
     FlexLayoutModule,
